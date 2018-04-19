@@ -108,6 +108,11 @@ public class SandLab
     			grid[randomRow][randomCol] = WATER;
     			grid[randomRow + 1][randomCol] = SAND;
     		}
+    		if (grid[randomRow + 1][randomCol] == STEAM)
+    		{
+    			grid[randomRow][randomCol] = STEAM;
+    			grid[randomRow + 1][randomCol] = SAND;
+    		}
     	}
     }
     if (grid[randomRow][randomCol] == WATER)
@@ -122,12 +127,22 @@ public class SandLab
     				grid[randomRow][randomCol] = EMPTY;
     				grid[randomRow + 1][randomCol] = WATER;
     			}
+    			else if (grid[randomRow + 1][randomCol] == STEAM)
+    			{
+    				grid[randomRow][randomCol] = STEAM;
+    				grid[randomRow + 1][randomCol] = WATER;
+    			}
     		}
     		else if (randomDirection == 1 && randomCol + 1 != grid[0].length)	//Right
     		{
     			if (grid[randomRow][randomCol + 1] == EMPTY)
     			{
     				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow][randomCol + 1] = WATER;
+    			}
+    			else if (grid[randomRow][randomCol + 1] == STEAM)
+    			{
+    				grid[randomRow][randomCol] = STEAM;
     				grid[randomRow][randomCol + 1] = WATER;
     			}
     		}
@@ -137,6 +152,11 @@ public class SandLab
     			{
     				grid[randomRow][randomCol] = EMPTY;
     				grid[randomRow][randomCol -1 ] = WATER;
+    			}
+    			else if (grid[randomRow][randomCol - 1] == STEAM)
+    			{
+    				grid[randomRow][randomCol] = STEAM;
+    				grid[randomRow][randomCol - 1] = WATER;
     			}
     		}
     	}
@@ -150,6 +170,11 @@ public class SandLab
     				grid[randomRow][randomCol] = EMPTY;
     				grid[randomRow][randomCol + 1] = WATER;
     			}
+    			else if (grid[randomRow][randomCol + 1] == STEAM)
+    			{
+    				grid[randomRow][randomCol] = STEAM;
+    				grid[randomRow][randomCol + 1] = WATER;
+    			}
     		}
     		else if (randomDirection == 1 && randomCol - 1 != -1)	//Left
     		{
@@ -157,6 +182,62 @@ public class SandLab
     			{
     				grid[randomRow][randomCol] = EMPTY;
     				grid[randomRow][randomCol - 1] = WATER;
+    			}
+    			else if (grid[randomRow][randomCol - 1] == STEAM)
+    			{
+    				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow][randomCol - 1] = WATER;
+    			}
+    		}
+    	}
+    }
+    if (grid[randomRow][randomCol] == STEAM)
+    {
+    	if (randomRow != 0)
+    	{
+    		int randomDirection = (int) (Math.random() * 3);
+    		if (randomDirection == 0)	//Up
+    		{
+    			if (grid[randomRow - 1][randomCol] == EMPTY)
+    			{
+    				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow - 1][randomCol] = STEAM;
+    			}
+    		}
+    		else if (randomDirection == 1 && randomCol + 1 != grid[0].length)	//Right
+    		{
+    			if (grid[randomRow][randomCol + 1] == EMPTY)
+    			{
+    				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow][randomCol + 1] = STEAM;
+    			}
+    		}
+    		else if (randomDirection == 2 && randomCol - 1 != - 1)	//Left
+    		{
+    			if (grid[randomRow][randomCol - 1] == EMPTY)
+    			{
+    				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow][randomCol - 1] = STEAM;
+    			}
+    		}
+    	}
+    	else
+    	{
+    		int randomDirection = (int) (Math.random() * 2);
+    		if (randomDirection == 0 && randomCol + 1 != grid[0].length)	//Right
+    		{
+    			if (grid[randomRow][randomCol + 1] == EMPTY)
+    			{
+    				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow][randomCol + 1] = STEAM;
+    			}
+    		}
+    		else if (randomDirection == 1 && randomCol - 1 != - 1)	//Left
+    		{
+    			if (grid[randomRow][randomCol - 1] == EMPTY)
+    			{
+    				grid[randomRow][randomCol] = EMPTY;
+    				grid[randomRow][randomCol - 1] = STEAM;
     			}
     		}
     	}
